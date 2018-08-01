@@ -1,7 +1,7 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 import ReactDom from 'react-dom';
 import faker from 'faker';
-import {DOGE, KISS, KOALA, say} from 'cowsay';
+import { DOGE, KISS, KOALA, say } from 'cowsay';
 import './style/app.scss';
 
 
@@ -14,7 +14,7 @@ class App extends Component {
     this.updateAnimal = this.updateAnimal.bind(this);
 
     this.state = {
-      content: "",
+      content: say({ text: "BOW COW" }),
       cow: "DOGE"
     };
   }
@@ -25,29 +25,8 @@ class App extends Component {
     });
   }
 
-  updateAnimal(event) {
-    if (event.target.value === 'giraffe') {
-      this.setState({cow: GIRAFFE})
-    }
-
-  }
-
-  render() {
-    return (
-      <Fragment>
-        <header>
-//         <h1>My </h1>
-//       </header>
-      
-      </Fragment>
-    );
-  }
-
-}
-
-ReactDom.render(<App />, document.getElementById('root'));
-newAnimal(event) {
-  if (event.target.value === 'doge') {
+  newAnimal(event) {
+  if (event.target.value === 'doggie') {
     this.setState({ cow: DOGE });
   }
   if (event.target.value === 'kiss') {
@@ -55,22 +34,23 @@ newAnimal(event) {
   }
   if (event.target.value === 'koala') {
     this.setState({ cow: KOALA });
-  };
-
+  }
 };
-
 render() {
   return (
     <Fragment>
-      <h1>My Animals and a kiss</h1>
+      <h1>My Talking Animals and a Lovely Kiss</h1>
       <button onClick={this.handleClick}>Push my BUTTON!</button>
       <select onChange={this.newAnimal}>
-        <option value="doge">Get along little doge</option>
+        <option value="doge">Get along little dogie</option>
         <option value="kiss">K-I-S-S-I-N-G</option>
-        <option value="koala">BEAR!</option>
+        <option value="koala">There's a BEAR!</option>
       
       </select>
       <pre>{say({ text: this.state.content, cow: this.state.cow })}</pre>
     </Fragment>
   );
+ };
 }
+
+ReactDom.render(<App />, document.getElementById('root'));
