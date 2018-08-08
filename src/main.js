@@ -25,7 +25,7 @@ class App extends Component {
     });
   }
 
-  newAnimal(event) {
+  updateAnimal(event) {
   if (event.target.value === 'doggie') {
     this.setState({ cow: DOGE });
   }
@@ -36,18 +36,21 @@ class App extends Component {
     this.setState({ cow: KOALA });
   }
 };
+
+//Tyler helped me with Fragment. Thank you Tyler!!
+// A common pattern in React is for a component to return multiple elements like the animals I have here. Fragments let you group a list of children without adding extra nodes to the DOM.
 render() {
   return (
-    <Fragment>
+    <Fragment> 
       <h1>My Talking Animals and a Lovely Kiss</h1>
-      <button onClick={this.handleClick}>Push my BUTTON!</button>
-      <select onChange={this.newAnimal}>
+      <button onClick={ this.handleClick }>Push my BUTTON!</button>
+      <select onChange={ this.updateAnimal }>
         <option value="doge">Get along little dogie</option>
         <option value="kiss">K-I-S-S-I-N-G</option>
         <option value="koala">There's a BEAR!</option>
       
       </select>
-      <pre>{say({ text: this.state.content, cow: this.state.cow })}</pre>
+      <pre>{ say({ text: this.state.content, cow: this.state.cow }) }</pre>
     </Fragment>
   );
  };
